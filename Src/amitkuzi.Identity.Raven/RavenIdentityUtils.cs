@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using amitkuzi.Identity.RavenEmbaded;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Raven.Client.Documents;
@@ -9,7 +10,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace amitkuzi.Identity.RavenEmbaded
+namespace amitkuzi.Identity.Raven
 {
     //  IdentityBuilder,IdentityOptions
     public static class RavenIdentityUtils
@@ -20,13 +21,13 @@ namespace amitkuzi.Identity.RavenEmbaded
 
         public static IHostingEnvironment Env(this IServiceCollection services) => services.BuildServiceProvider().GetService<IHostingEnvironment>();
 
-        public static RavenIdentityBuilder AddRavenEmbadedStores(this IdentityBuilder identityBuilder, Func<IDocumentStore> documentStoreFactory)
+        public static RavenIdentityBuilder AddRavenStores(this IdentityBuilder identityBuilder, Func<IDocumentStore> documentStoreFactory)
         {
             Debug.WriteLine("******** AddRavenEmbadedStores *****************");
             identityBuilder.Services.AddScoped(typeof(IRoleStore<>).MakeGenericType(identityBuilder.RoleType), typeof(RavenRoleStore<>).MakeGenericType(identityBuilder.RoleType));//identityBuilder.AddRoleStore<RavenRoleStore>()
             identityBuilder.Services.AddScoped(typeof(IUserStore<>).MakeGenericType(identityBuilder.UserType), typeof(RavenUserStore<>).MakeGenericType(identityBuilder.UserType));//.AddUserStore
             identityBuilder.Services.AddTransient(sp => documentStoreFactory());
-            
+
             return new RavenIdentityBuilder(identityBuilder);
         }
 
@@ -53,7 +54,7 @@ namespace amitkuzi.Identity.RavenEmbaded
                     TRole dbrole = null;
                     try
                     {
-                        dbrole = identityDocumentStore.IdentitySession<TRole>(session => session.Query<TRole>().FirstOrDefault(r => r.NormalizedName == role.NormalizedName));
+                        dbrole = identityDocumentStore.IdentitySession(session => session.Query<TRole>().FirstOrDefault(r => r.NormalizedName == role.NormalizedName));
                     }
                     catch (InvalidCastException ie)
                     {
@@ -78,7 +79,7 @@ namespace amitkuzi.Identity.RavenEmbaded
                     TUser dbuser = null;
                     try
                     {
-                        dbuser = identityDocumentStore.IdentitySession<TUser>(session => session.Query<TUser>().FirstOrDefault(u => u.NormalizedUserName == NormalizedUserName));
+                        dbuser = identityDocumentStore.IdentitySession(session => session.Query<TUser>().FirstOrDefault(u => u.NormalizedUserName == NormalizedUserName));
                     }
                     catch (InvalidCastException ie)
                     {
@@ -104,7 +105,7 @@ namespace amitkuzi.Identity.RavenEmbaded
         internal static string GetId(this Claim claim)
         {
             if (claim == null) return null;
-             
+
             return $"{claim.Type}/{claim.Value}/{claim.ValueType}/{claim.Issuer}/{claim.OriginalIssuer}";
         }
 
@@ -240,10 +241,10 @@ namespace amitkuzi.Identity.RavenEmbaded
 
     public class RavenIdentityBuilder : IdentityBuilder
     {
-        public RavenIdentityBuilder(IdentityBuilder identityBuilder):base(identityBuilder.UserType, identityBuilder.RoleType, identityBuilder.Services)
+        public RavenIdentityBuilder(IdentityBuilder identityBuilder) : base(identityBuilder.UserType, identityBuilder.RoleType, identityBuilder.Services)
         {
 
         }
-       
+
     }
 }

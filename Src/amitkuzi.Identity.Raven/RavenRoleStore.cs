@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using amitkuzi.Identity.Raven;
+using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Raven.Client.Documents;
