@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Product>amitkuzi.Identity.Raven</Product>
+    <Description>this will help replace EF with RavenDb as Microsoft Identity UserStore And RoleStore</Description>
+    <PackageId>amitkuzi.Identity.Raven</PackageId>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <PackageReleaseNotes>first deploy</PackageReleaseNotes>
+    <Version>0.1.0</Version>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+    <Company>amit kuzi</Company>
+    <Authors>amit kuzi</Authors>
   </PropertyGroup>
 
   <ItemGroup>

@@ -21,26 +21,28 @@ namespace Sample.com
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            /* services.AddDbContext<ApplicationDbContext>(options =>
+            /* 
+            //remove mssql database initialization
+                services.AddDbContext<ApplicationDbContext>(options =>
                  options.UseSqlServer(
                      Configuration.GetConnectionString("DefaultConnection")));
              services.AddDatabaseDeveloperPageExceptionFilter();*/
 
 
-            var RavenOptions = services.EnsureOptions<RavenStoreOptions>();
-            var documentStoreFactory = services.InitiateRavenDb(RavenOptions);
+            var RavenOptions = services.EnsureOptions<RavenStoreOptions>(); // add raven stor option to appsetting
+            var documentStoreFactory = services.InitiateRavenDb(RavenOptions); // use options to init raven and creat a document store factory (save for later user )
 
 
 
-
+            // comment out Identiy init 
             /* services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                  .AddEntityFrameworkStores<ApplicationDbContext>();*/
 
-            services.AddIdentity<IdentityUser, IdentityRole>().
-                AddDefaultTokenProviders().
+            services.AddIdentity<IdentityUser, IdentityRole>(). // init ms identity (with your preferd user and role types 
+                AddDefaultTokenProviders(). 
                 AddDefaultUI().
-                AddRavenStores(documentStoreFactory).
-                    EnsureUserRols(new IdentityUser("basic user da mast have "),
+                AddRavenStores(documentStoreFactory). // add raven store to identity , inject document stor factory for any of ravendb varient (5.0 > )
+                    EnsureUserRols(new IdentityUser("basic user da mast have "), // add your bootstapuser and his roles
                         new IdentityRole("first role user must have"), 
                         new IdentityRole("2nd role user must have"));
 
