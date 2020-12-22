@@ -7,7 +7,7 @@
     <PackageId>amitkuzi.Persistence.RavenEmbaded</PackageId>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <PackageReleaseNotes>first release now work with Raven db Embedded 5</PackageReleaseNotes>
-    <Version>0.1.0</Version>
+    <Version>0.2.0</Version>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <Company>amit kuzi</Company>
     <Authors>amit kuzi</Authors>
