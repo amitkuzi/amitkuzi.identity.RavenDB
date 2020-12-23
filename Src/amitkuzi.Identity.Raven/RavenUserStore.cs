@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace amitkuzi.Identity.RavenEmbaded
 {
-    internal class RavenUserStore<TUser> : UserStoreBase<TUser, string, IdentityUserClaim<string>, IdentityUserLogin<string>, IdentityUserToken<string>>, IUserStore<TUser>, IUserRoleStore<TUser>
+    internal class RavenUserStore<TUser> : UserStoreBase<TUser, string, IdentityUserClaim<string>, IdentityUserLogin<string>, IdentityUserToken<string>>, IUserStore<TUser>, IUserRoleStore<TUser> , IUserEmailStore<TUser>
         where TUser : IdentityUser
     {
         private readonly IDocumentStore identityDocumentStore;
