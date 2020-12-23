@@ -110,8 +110,9 @@ namespace amitkuzi.Identity.RavenEmbaded
             ThrowIfDisposed();
             try
             {
-                return await identityDocumentStore.IdentitySession<TUser>(async session =>
+                var user = await identityDocumentStore.IdentitySession<TUser>(async session =>
                 await session.Query<TUser>().FirstOrDefaultAsync(User => User.NormalizedUserName == normalizedUserName));
+                return user ??= await FindByEmailAsync(normalizedUserName, cancellationToken); 
             }
             catch (InvalidOperationException er)
             {
