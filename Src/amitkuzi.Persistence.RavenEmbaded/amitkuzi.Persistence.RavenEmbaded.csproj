@@ -6,8 +6,10 @@
     <Description>this will help replace EF with RavenDb as Microsoft Identity UserStore And RoleStore</Description>
     <PackageId>amitkuzi.Persistence.RavenEmbaded</PackageId>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-    <PackageReleaseNotes>first release now work with Raven db Embedded 5</PackageReleaseNotes>
-    <Version>0.3.0</Version>
+	<PackageReleaseNotes>Add project repo url</PackageReleaseNotes>
+	<RepositoryUrl>https://github.com/amitkuzi/amitkuzi.identity.RavenDB.git</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<Version>0.4.0</Version>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <Company>amit kuzi</Company>
     <Authors>amit kuzi</Authors>
