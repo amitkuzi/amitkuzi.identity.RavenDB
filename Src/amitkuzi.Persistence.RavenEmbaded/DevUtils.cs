@@ -6,12 +6,12 @@ using System.IO;
 
 namespace amitkuzi.Persistence.RavenEmbaded
 {
-    public static class DevUtils
+    internal static class DevUtils
     {
 
 
 
-        public static IServiceCollection DevEnsureConfigItem(this IServiceCollection services, string section, object value)
+        internal static IServiceCollection DevEnsureConfigItem(this IServiceCollection services, string section, object value)
         {
             if (services.Env().IsDevelopment())
             {

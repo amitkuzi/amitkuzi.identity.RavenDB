@@ -7,7 +7,7 @@
     <PackageId>amitkuzi.Identity.Raven</PackageId>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <PackageReleaseNotes>first deploy</PackageReleaseNotes>
-    <Version>0.2.0</Version>
+    <Version>0.3.0</Version>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <Company>amit kuzi</Company>
     <Authors>amit kuzi</Authors>
