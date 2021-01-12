@@ -14,8 +14,19 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 5.0
+      - name: Install dependencies
+    	run: dotnet restore
+      - name: Build
+    	run: dotnet build --configuration Release --no-restore
+      
+      # Publich 1
+      - name: Publish amitkuzi.identity.RavenDB
+      	uses: brandedoutcast/publish-nuget@v2.5.2
+      with:
+          PROJECT_FILE_PATH: Src/amitkuzi.Identity.Raven/amitkuzi.Identity.Raven.csproj
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
 
-      # Publish
+      # Publish 2
       - name: publish on version change
         id: publish_nuget
         uses: rohith/publish-nuget@v2
