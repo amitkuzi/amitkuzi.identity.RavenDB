@@ -14,8 +14,8 @@ jobs:
         uses: actions/setup-dotnet@v1.7.2
         with:
           dotnet-version: "5.0.x"
-      - name: test
-        run: ls -la
+      - name: restore
+        run: dotnet restore  Src/amitkuzi.Identity.Raven/amitkuzi.Identity.Raven.csproj
       - name: build
         run: dotnet build Src/amitkuzi.Identity.Raven/amitkuzi.Identity.Raven.csproj --configuration Release
         # Publich 1
