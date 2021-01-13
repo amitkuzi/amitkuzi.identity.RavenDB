@@ -7,9 +7,9 @@
     <PackageId>amitkuzi.Identity.Raven</PackageId>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <PackageReleaseNotes>Add project repo url</PackageReleaseNotes>
-	<RepositoryUrl>https://github.com/amitkuzi/amitkuzi.identity.RavenDB.git</RepositoryUrl>
-	<RepositoryType>git</RepositoryType>
-	<Version>0.4.0</Version>
+    <RepositoryUrl>https://github.com/amitkuzi/amitkuzi.identity.RavenDB.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Version>0.3.3</Version>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <Company>amit kuzi</Company>
     <Authors>amit kuzi</Authors>
