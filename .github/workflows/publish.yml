@@ -17,12 +17,12 @@ jobs:
       - name: test
         run: ls -la
       - name: build
-        run: dotnet build /src/amitkuzi.Identity.Raven/amitkuzi.Identity.Raven.csproj --configuration Release
+        run: dotnet build Src/amitkuzi.Identity.Raven/amitkuzi.Identity.Raven.csproj --configuration Release
         # Publich 1
       - name: Publish amitkuzi.identity.RavenDB
         uses: brandedoutcast/publish-nuget@v2.5.2
         with:
-          PROJECT_FILE_PATH: /src/amitkuzi.Identity.Raven/amitkuzi.Identity.Raven.csproj
+          PROJECT_FILE_PATH: Src/amitkuzi.Identity.Raven/amitkuzi.Identity.Raven.csproj
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
 
       # Publish 2
