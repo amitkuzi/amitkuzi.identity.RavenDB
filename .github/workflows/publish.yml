@@ -14,9 +14,8 @@ jobs:
         uses: actions/setup-dotnet@v1.7.2
         with:
           dotnet-version: "5.0.x"
-          PROJECT_FILE_PATH: /src/amitkuzi.Identity.Raven/amitkuzi.Identity.Raven.csproj
       - name: Install dependencies
-        run: dotnet restore
+        run: dotnet restore -V /src/amitkuzi.Identity.Raven/amitkuzi.Identity.Raven.csproj
       - name: Build
         run: dotnet build --configuration Release --no-restore
         # Publich 1
