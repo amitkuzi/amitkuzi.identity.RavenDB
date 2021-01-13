@@ -15,9 +15,9 @@ jobs:
         with:
           dotnet-version: "5.0.x"
       - name: test
-        run: pwd
-      - name: Build
-        run: dotnet build "~/src/amitkuzi.Identity.Raven/amitkuzi.Identity.Raven.csproj" --configuration Release
+        run: ls -la
+      - name: build
+        run: dotnet build /src/amitkuzi.Identity.Raven/amitkuzi.Identity.Raven.csproj --configuration Release
         # Publich 1
       - name: Publish amitkuzi.identity.RavenDB
         uses: brandedoutcast/publish-nuget@v2.5.2
