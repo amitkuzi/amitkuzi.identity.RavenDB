@@ -15,14 +15,14 @@ jobs:
         with:
           dotnet-version: 5.0
       - name: Install dependencies
-    	run: dotnet restore
+        run: dotnet restore
       - name: Build
-    	run: dotnet build --configuration Release --no-restore
-      
+        run: dotnet build --configuration Release --no-restore
+
       # Publich 1
       - name: Publish amitkuzi.identity.RavenDB
-      	uses: brandedoutcast/publish-nuget@v2.5.2
-      with:
+        uses: brandedoutcast/publish-nuget@v2.5.2
+        with:
           PROJECT_FILE_PATH: Src/amitkuzi.Identity.Raven/amitkuzi.Identity.Raven.csproj
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
 
@@ -33,16 +33,16 @@ jobs:
         with:
           # Filepath of the project to be packaged, relative to root of repository
           PROJECT_FILE_PATH: /Src/amitkuzi.Identity.Raven/amitkuzi.Identity.Raven.csproj
-          
+
           # NuGet package id, used for version detection & defaults to project name
           # PACKAGE_NAME: Core
-          
+
           # Filepath with version info, relative to root of repository & defaults to PROJECT_FILE_PATH
           # VERSION_FILE_PATH: Directory.Build.props
 
           # Regex pattern to extract version info in a capturing group
           # VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
-          
+
           # Useful with external providers like Nerdbank.GitVersioning, ignores VERSION_FILE_PATH & VERSION_REGEX
           # VERSION_STATIC: 1.0.0
 
@@ -53,7 +53,7 @@ jobs:
           TAG_FORMAT: v*
 
           # API key to authenticate with NuGet server
-          NUGET_KEY:   ${{secrets.NUGET_API_KEY}}
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
 
           # NuGet server uri hosting the packages, defaults to https://api.nuget.org
           NUGET_SOURCE: https://api.nuget.org
