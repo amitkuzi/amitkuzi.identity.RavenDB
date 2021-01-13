@@ -14,10 +14,8 @@ jobs:
         uses: actions/setup-dotnet@v1.7.2
         with:
           dotnet-version: "5.0.x"
-      - name: Install dependencies
-        run: dotnet restore -V /src/amitkuzi.Identity.Raven/amitkuzi.Identity.Raven.csproj
       - name: Build
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build --configuration Release
         # Publich 1
       - name: Publish amitkuzi.identity.RavenDB
         uses: brandedoutcast/publish-nuget@v2.5.2
