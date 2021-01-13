@@ -15,7 +15,7 @@ jobs:
         with:
           dotnet-version: "5.0.x"
       - name: restore
-        run: dotnet restore  Src/amitkuzi.Identity.Raven/amitkuzi.Identity.Raven.csproj
+        run: dotnet restore  Src/amitkuzi.Identity.Raven/amitkuzi.Identity.Raven.csproj --api-key ${{secrets.GITHUB_KEY}}
       - name: build
         run: dotnet build Src/amitkuzi.Identity.Raven/amitkuzi.Identity.Raven.csproj --configuration Release
         # Publich 1
